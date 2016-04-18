@@ -14,7 +14,7 @@ export default  class TodoApp extends React.Component{
 
         return (
             <div>
-                <h1>Welcome to ReactJS</h1>
+                <h1>Welcome to ReactJS Test Atom</h1>
             </div>
         )
     }
