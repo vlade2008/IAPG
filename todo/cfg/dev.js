@@ -10,7 +10,6 @@ var baseConfig = require('./base');
 
 var config = _.merge({
     output: {
-        path: path.join(__dirname, '/../dist/assets'),
         filename: 'app.js',
         publicPath: publicPath
     },
