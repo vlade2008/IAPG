@@ -8,30 +8,50 @@ export default  class TodoApp extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            name: 'Student'
+          mytodo:'',
+            list:[
+              'Vote dutarte',
+              'Vote pacquioa'
+            ]
         };
     }
-   
-   
-  onChange=(e)=>{
-     this.setState({
-         name:e.target.value
-     })
-  };
-  
-  
+
+      onChange=(e)=>{
+       this.setState({
+           mytodo:e.target.value
+       })
+    };
+
+    onAddItem=(e)=>{
+
+      if (e.key === 'Enter') {
+        var tmp = this.state.list;
+       tmp.push(this.state.mytodo);
+
+       this.setState({
+        list:tmp,
+        mytodo:' '
+       })
+      }
+       
+    };
   
     render(){
+      let items = [];
+      
+      for(var i=0; i<this.state.list.length;i++){
+        items.push(<li key={i}>{this.state.list[i]}</li>);
+      }
 
         return (
             <div>
-                <h1>Welcome to ReactJS {this.state.name}</h1>
-                <strong>Enter your name</strong><br/>
-                <form>
-                <input type="text" onChange={this.onChange} />
-                </form>
+                <h1>My todo list</h1>
+                <input type="text" onChange={this.onChange}  onKeyUp={this.onAddItem} value={this.state.mytodo}/>
+                
+                <ol>
+                    {items}
+                </ol>
             </div>
         )
     }
 }
- 
